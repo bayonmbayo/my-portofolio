@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: My Portfolio
+---
+<h1>Bayon Mbayo</h1>
+<p>I'm building my professional portfolio, learning agentic programming as I go.</p>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>{{ about.intro }}</p>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        {% for project in projects %}
+        <li>
+            <strong>{{ project.title }}</strong>
+            <p>{{ project.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <ul>
+        {% for item in contact %}
+        <li>{{ item.label }}: <a href="{{ item.href }}">{{ item.value }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
