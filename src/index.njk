@@ -1,34 +1,174 @@
 ---
 layout: base.njk
-title: My Portfolio
-description: "Bayon Mbayo — software developer building with AI agents. Portfolio featuring Natportal (species protection reporting) and WPOP (auditor application platform)."
+title: Bayon Mbayo - Full Stack Developer
+description: "Bayon Mbayo — full stack developer building scalable enterprise applications and data processing systems. Portfolio, skills, experience, and projects."
 ---
-<h1>Bayon Mbayo</h1>
-<p>I'm building my professional portfolio, learning agentic programming as I go.</p>
+{% macro icon(name) %}
+{%- if name == "github" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.2.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+{%- elif name == "linkedin" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+{%- elif name == "mail" or name == "email" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+{%- elif name == "external" -%}
+<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+{%- elif name == "globe" -%}
+<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+{%- elif name == "server" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+{%- elif name == "database" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+{%- elif name == "cpu" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+{%- elif name == "terminal" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 7 5 5-5 5"/><path d="M12 17h7"/></svg>
+{%- elif name == "briefcase" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M2.5 12h19"/></svg>
+{%- elif name == "cap" -%}
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 1.5 8 12 13l10.5-5L12 3Z"/><path d="M5 10.5V16c0 1.5 3 3 7 3s7-1.5 7-3v-5.5"/></svg>
+{%- endif -%}
+{% endmacro %}
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>{{ about.intro }}</p>
-</section>
+<header class="site-header">
+    <div class="nav-inner">
+        <a href="#top" class="logo">&lt;Bayon /&gt;</a>
+        <nav>
+            <a href="#top">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <ul>
-        {% for project in projects %}
-        <li>
-            <strong>{{ project.title }}</strong>
-            <p>{{ project.description }}</p>
-            {% if project.link %}<p><a href="{{ project.link }}">{{ project.link }}</a></p>{% endif %}
-        </li>
+<main>
+    <section class="hero" id="top">
+        <div class="hero-blobs" aria-hidden="true">
+            <span class="blob blob-purple"></span>
+            <span class="blob blob-blue"></span>
+            <span class="blob blob-pink"></span>
+        </div>
+        <img src="/images/bayon.jpg" alt="Portrait of Bayon Mbayo" class="hero-photo" width="160" height="160">
+        <div class="hero-text">
+            <span class="badge">{{ about.role }}</span>
+            <h1>Hi, I'm <span class="accent-gradient">Bayon</span></h1>
+            <p class="lede">{{ about.intro }}</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+            <div class="social-row">
+                {% for item in contact.items %}
+                <a href="{{ item.href }}" aria-label="{{ item.label }}" target="{{ '_blank' if item.label != 'Email' else '_self' }}" rel="noopener">{{ icon(item.label | lower) }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            {% set skillIcons = {
+                "Backend Development": "server",
+                "Frontend Development": "globe",
+                "Database & Data": "database",
+                "DevOps & Tools": "cpu",
+                "Architecture": "terminal"
+            } %}
+            {% for category in skills.groups %}
+            <div class="card skill-card">
+                <div class="skill-icon">{{ icon(skillIcons[category.title]) }}</div>
+                <h3>{{ category.title }}</h3>
+                <div class="tags">
+                    {% for item in category.items %}<span class="tag">{{ item }}</span>{% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h3 class="languages-heading">Languages</h3>
+        <div class="lang-pills">
+            {% for lang in skills.languages %}<span class="lang-pill">{{ lang }}</span>{% endfor %}
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <p class="section-sub">A portfolio of enterprise applications, data systems, and innovative software solutions I've developed.</p>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <article class="card project-card">
+                <div class="project-banner" style="background: linear-gradient(135deg, {{ project.color[0] }}, {{ project.color[1] }});">
+                    <span class="code-icon">&lt;/&gt;</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-title-row">
+                        <h3>{{ project.title }}</h3>
+                        <div class="project-links">
+                            {% if project.link %}<a href="{{ project.link }}" class="project-link" aria-label="View {{ project.title }}" title="View Project" target="_blank" rel="noopener">{{ icon("external") }}</a>{% endif %}
+                            {% if project.website %}<a href="{{ project.website }}" class="project-link" aria-label="Visit {{ project.title }} website" title="Visit Website" target="_blank" rel="noopener">{{ icon("globe") }}</a>{% endif %}
+                        </div>
+                    </div>
+                    <p>{{ project.description }}</p>
+                    <div class="tags">
+                        {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        {% for job in experience %}
+        <div class="card timeline-card">
+            <div class="timeline-icon">{{ icon("briefcase") }}</div>
+            <div class="timeline-body">
+                <div class="timeline-head">
+                    <div>
+                        <h3>{{ job.title }}</h3>
+                        <p class="timeline-org"><a href="{{ job.companyLink }}" target="_blank" rel="noopener">{{ job.company }}</a></p>
+                        <p class="timeline-location">{{ job.location }}</p>
+                    </div>
+                    <span class="period-pill">{{ job.period }}</span>
+                </div>
+                <p>{{ job.description }}</p>
+                <ul>
+                    {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+                </ul>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-</section>
+    </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <ul>
-        {% for item in contact %}
-        <li>{{ item.label }}: <a href="{{ item.href }}">{{ item.value }}</a></li>
+    <section id="education">
+        <h2>Education</h2>
+        {% for degree in education %}
+        <div class="card timeline-card">
+            <div class="timeline-icon">{{ icon("cap") }}</div>
+            <div class="timeline-body">
+                <div class="timeline-head">
+                    <div>
+                        <h3>{{ degree.title }}</h3>
+                        <p class="timeline-org"><a href="{{ degree.institutionLink }}" target="_blank" rel="noopener">{{ degree.institution }}</a></p>
+                    </div>
+                    <span class="period-pill">{{ degree.period }}</span>
+                </div>
+                <p>{{ degree.description }}</p>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-</section>
+    </section>
+
+    <section id="contact" class="cta">
+        <h2>Let's Build Something Together</h2>
+        <p>{{ contact.intro }}</p>
+        <a href="mailto:{{ contact.items[0].value }}" class="btn btn-primary">{{ icon("mail") }} Get In Touch</a>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; {{ year }} Bayon Mbayo.</p>
+</footer>
