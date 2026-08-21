@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: My Portfolio
+description: "Bayon Mbayo — software developer building with AI agents. Portfolio featuring Natportal (species protection reporting) and WPOP (auditor application platform)."
 ---
 <h1>Bayon Mbayo</h1>
 <p>I'm building my professional portfolio, learning agentic programming as I go.</p>
@@ -17,6 +18,7 @@ title: My Portfolio
         <li>
             <strong>{{ project.title }}</strong>
             <p>{{ project.description }}</p>
+            {% if project.link %}<p><a href="{{ project.link }}">{{ project.link }}</a></p>{% endif %}
         </li>
         {% endfor %}
     </ul>
