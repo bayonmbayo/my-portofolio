@@ -29,12 +29,6 @@ Link: https://play.google.com/store/apps/details?id=com.onelike.app
 Website: https://social.onelike.app
 Color: #22d3ee, #2563eb
 
-## Roos Breaker - Mobile Puzzle Game
-Challenging puzzle game for mobile platforms with color-matching mechanics, bomb deactivation system, progressive level design, and cloud-based backend for player data persistence and leaderboards.
-Tags: Unity, C#, Firebase
-Link: https://play.google.com/store/apps/details?id=com.onelikegaming.roosbreaker
-Color: #ec4899, #ef4444
-
 ## Windows GUI Development with WIN-API
 Complex Windows desktop application using native Windows API demonstrating low-level GUI programming, event-driven architecture, and Windows message processing with resistance color coding calculator and interactive features.
 Tags: C++, Code::Blocks, Windows API, GCC 8.1.0
